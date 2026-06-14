@@ -4,6 +4,8 @@
 
 > ⚠️ **这个 README 是 AI 写的，可能有幻觉**。具体行为请以代码为准，描述跟实际对不上的地方欢迎提 issue / 直接改。
 >
+> 虽然俺的本职工作是UI和用户体验设计, 但确实在这里比较偷懒, 没有精力打磨, 凑合用吧
+>
 > ⚠️ **This README is AI-generated and may hallucinate.** Code is the source of truth — open an issue or fix directly when descriptions diverge from reality.
 
 一个本地跑的 AI API 调试工具。**主要作用就三件事**：
