@@ -1,5 +1,10 @@
 # 🧪 AI API Tester
 
+一个本地跑的 AI API 调试工具。有界面，填字段比写 JSON 省事，切换模型/渠道点一下就切；**请求体和返回体完全透明** —— 你发出去什么、收回来什么，全部摊开，方便调试。
+
+A local AI API debugging tool. With a UI — filling fields beats hand-writing JSON, switching models/providers is one click; **full request/response transparency** — everything you send and receive is fully laid out for debugging.
+
+
 ![Preview](./preview.png)
 
 > ⚠️ **这个 README 是 AI 写的，可能有幻觉**。具体行为请以代码为准，描述跟实际对不上的地方欢迎提 issue / 直接改。
@@ -7,10 +12,6 @@
 > 虽然俺的本职工作是UI和用户体验设计, 但确实在这里比较偷懒, 没有精力打磨, 凑合用吧
 >
 > ⚠️ **This README is AI-generated and may hallucinate.** Code is the source of truth — open an issue or fix directly when descriptions diverge from reality.
-
-一个本地跑的 AI API 调试工具。有界面，填字段比写 JSON 省事，切换模型/渠道点一下就切；**请求体和返回体完全透明** —— 你发出去什么、收回来什么，全部摊开，方便调试。
-
-A local AI API debugging tool. With a UI — filling fields beats hand-writing JSON, switching models/providers is one click; **full request/response transparency** — everything you send and receive is fully laid out for debugging.
 
 支持 OpenAI Chat Completions、OpenAI Responses、Anthropic Messages 三种协议，以及兼容这三家的中转。
 Supports OpenAI Chat Completions, OpenAI Responses, Anthropic Messages, and any compatible relay.
