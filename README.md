@@ -22,17 +22,11 @@
 
 从真实痛点里长出来的。
 
-最早只是想给 opencode 里的模型开 thinking 模式，折腾半天发现：**同样是 OpenAI Chat Completions 这个"通用协议"，各家字段还是不一样** —— OpenAI o-series 要 `reasoning_effort`，Anthropic 要 `thinking.type` + `budget_tokens`，字节豆包、智谱 GLM、月之暗面 MiniMax 又各自有别的字段名，各种 NewAPI / oneapi 中转根本没文档，只能一个个字段试。
-
-返回也乱：推理数据有的包在 ` </think>` 标签里，有的在 `reasoning_content` 字段，有的只在 SSE 流的某个 event 里闪过。更烦的是 —— opencode、Cline 这些上层工具**不给你看真实的 HTTP 请求体和返回数据**，debug 全靠猜。
+最早只是想给 opencode 里的模型开 thinking 模式，折腾半天发现：同样是 OpenAI Chat Completions 这个"通用协议"，各家字段还是不一样 —— OpenAI o-series 要 `reasoning_effort`，Anthropic 要 `thinking.type` + `budget_tokens`，字节豆包、智谱 GLM、月之暗面 MiniMax 又各自有别的字段名。返回也乱：推理数据有的包在 `  response` 标签里，有的在 `reasoning_content` 字段，有的只在 SSE 流的某个 event 里闪过。想调试的话 —— opencode、Cline 这些上层工具不给你看真实的 HTTP 请求体和返回数据，debug 全靠猜。
 
 所以做了这个**过程透明**的工具：你发出去的 URL / headers / body，和收回来的 status / headers / body / 原始 SSE 帧，全部摊在你面前。字段怎么配，自己试，立刻看到结果。
 
-> *Born from real pain. I just wanted to enable thinking mode for a model inside opencode, and discovered that even within the supposedly "universal" OpenAI Chat Completions protocol, every vendor has different fields — OpenAI o-series wants `reasoning_effort`, Anthropic wants `thinking.type` + `budget_tokens`, Doubao/GLM/MiniMax each invent their own. Relay services often have no docs at all, so you end up guessing field names one by one.*
->
-> *Responses are equally messy: reasoning data hides inside `  response` tags, or in a `reasoning_content` field, or flickers past in one specific SSE event. Worst of all, upper-layer tools like opencode and Cline **don't show you the real HTTP request/response** — debugging becomes pure guesswork.*
->
-> *So I built this **fully transparent** tool: every URL / header / body you send, and every status / header / body / raw SSE frame you receive, is laid out in front of you. Configure fields, try them, see results immediately.*
+> *Born from real pain. I just wanted to enable thinking mode for a model inside opencode, and discovered that even within the supposedly "universal" OpenAI Chat Completions protocol, every vendor has different fields — OpenAI o-series wants `reasoning_effort`, Anthropic wants `thinking.type` + `budget_tokens`, Doubao/GLM/MiniMax each invent their own. Responses are equally messy: reasoning data hides inside `  response` tags, or in a `reasoning_content` field, or flickers past in one specific SSE event. Want to debug? Upper-layer tools like opencode and Cline don't show you the real HTTP request/response — it's all guesswork.*
 
 ---
 
