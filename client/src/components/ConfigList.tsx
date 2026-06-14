@@ -20,12 +20,11 @@ export interface ConfigEntry {
   notes: string;
 }
 
-type SortField = 'name' | 'protocol' | 'models' | 'baseUrl';
+type SortField = 'name' | 'models' | 'baseUrl';
 type SortDir = 'asc' | 'desc';
 
 const COLUMNS: { field: SortField; label: string }[] = [
   { field: 'name', label: 'Name' },
-  { field: 'protocol', label: 'Protocol' },
   { field: 'models', label: 'Model' },
   { field: 'baseUrl', label: 'Base URL' },
 ];
@@ -76,8 +75,8 @@ interface Props {
 export default function ConfigList({ selectedId, onSelect, reloadKey }: Props) {
   const tableWrapRef = useRef<HTMLDivElement | null>(null);
   const { percents: colPercents, onResizeStart: onColResizeStart } = useColumnResizer({
-    count: 5,
-    initial: [24, 12, 24, 34, 6],
+    count: 4,
+    initial: [26, 28, 40, 6],
     storageKey: 'config-cols-percent',
     containerRef: tableWrapRef,
     minPercent: 4,
@@ -306,7 +305,7 @@ export default function ConfigList({ selectedId, onSelect, reloadKey }: Props) {
             </thead>
             <tbody>
               {sorted.length === 0 && !loadError && (
-                <tr><td colSpan={5} className="empty-row">No configs. Click <b>+ 添加 Provider</b> to create one.</td></tr>
+                <tr><td colSpan={4} className="empty-row">No configs. Click <b>+ 添加 Provider</b> to create one.</td></tr>
               )}
               {sorted.map(cfg => {
                 const activeEp = cfg.endpoints[cfg.protocol];
@@ -318,7 +317,6 @@ export default function ConfigList({ selectedId, onSelect, reloadKey }: Props) {
                     onClick={() => handleSelect(cfg)}
                   >
                     <td className="cell-name">{cfg.name}</td>
-                    <td><span className="protocol-badge">{PROTOCOL_LABEL[cfg.protocol]}</span></td>
                     <td className="cell-models">{formatModels(cfg.models)}</td>
                     <td className="cell-url" title={fullUrl}>{truncateUrl(fullUrl)}</td>
                     <td className="actions-col" onClick={e => e.stopPropagation()}>
@@ -477,6 +475,5 @@ function getSortValue(cfg: ConfigEntry, field: SortField): string {
     const ep = cfg.endpoints[cfg.protocol];
     return ep ? ep.baseUrl + ep.basePath : '';
   }
-  if (field === 'name') return cfg.name;
-  return cfg.protocol;
+  return cfg.name;
 }

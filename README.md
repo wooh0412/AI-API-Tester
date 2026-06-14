@@ -1,5 +1,7 @@
 # 🧪 AI API Tester
 
+![Preview](./preview.png)
+
 > ⚠️ **这个 README 是 AI 写的，可能有幻觉**。具体行为请以代码为准，描述跟实际对不上的地方欢迎提 issue / 直接改。
 >
 > ⚠️ **This README is AI-generated and may hallucinate.** Code is the source of truth — open an issue or fix directly when descriptions diverge from reality.
@@ -50,7 +52,6 @@ This project is built to be launched by an AI agent — starting servers, killin
 
 ```bash
 git clone <repo-url>
-cd apitest
 ```
 
 clone 下来后**什么都不用手动改**，把项目目录丢给 AI agent 就行。
