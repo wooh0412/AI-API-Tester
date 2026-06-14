@@ -97,7 +97,15 @@ export default function ConfigList({ selectedId, onSelect, reloadKey }: Props) {
   const [formProtocolTab, setFormProtocolTab] = useState<Protocol>('openai-completions');
 
   function emptyForm(): ConfigEntry {
-    return { id: '', name: '', protocol: 'openai-completions', models: [], endpoints: {}, apiKey: '', notes: '' };
+    return {
+      id: '', name: '', protocol: 'openai-completions', models: [],
+      endpoints: {
+        'openai-completions': { baseUrl: '', basePath: '/v1/chat/completions' },
+        'openai-responses': { baseUrl: '', basePath: '/v1/responses' },
+        'anthropic': { baseUrl: '', basePath: '/v1/messages' },
+      },
+      apiKey: '', notes: ''
+    };
   }
 
   const reload = useCallback(async () => {
