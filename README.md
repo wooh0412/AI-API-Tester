@@ -2,11 +2,7 @@
 
 一个本地跑的 AI API 调试工具。有界面，填字段比写 JSON 省事，切换模型/渠道点一下就切；**请求体和返回体完全透明** —— 你发出去什么、收回来什么，全部摊开，方便调试。
 
-<details><summary>🇬🇧 English</summary>
-
-A local AI API debugging tool. With a UI — filling fields beats hand-writing JSON, switching models/providers is one click; **full request/response transparency** — everything you send and receive is fully laid out for debugging.
-
-</details>
+> *A local AI API debugging tool. With a UI — filling fields beats hand-writing JSON, switching models/providers is one click; **full request/response transparency** — everything you send and receive is fully laid out for debugging.*
 
 支持 OpenAI Chat Completions、OpenAI Responses、Anthropic Messages 三种协议，以及兼容这三家的中转。
 
@@ -16,7 +12,7 @@ A local AI API debugging tool. With a UI — filling fields beats hand-writing J
 >
 > 虽然俺的本职工作是UI和用户体验设计, 但确实在这里比较偷懒, 没有精力打磨, 凑合用吧
 >
-> <details><summary>English</summary>This README is AI-generated and may hallucinate. Code is the source of truth — open an issue or fix directly when descriptions diverge from reality.</details>
+> *This README is AI-generated and may hallucinate. Code is the source of truth — open an issue or fix directly when descriptions diverge from reality.*
 
 ---
 
@@ -30,15 +26,11 @@ A local AI API debugging tool. With a UI — filling fields beats hand-writing J
 
 所以做了这个**过程透明**的工具：你发出去的 URL / headers / body，和收回来的 status / headers / body / 原始 SSE 帧，全部摊在你面前。字段怎么配，自己试，立刻看到结果。
 
-<details><summary>🇬🇧 English</summary>
-
-Born from real pain. I just wanted to enable thinking mode for a model inside opencode, and discovered that even within the supposedly "universal" OpenAI Chat Completions protocol, every vendor has different fields — OpenAI o-series wants `reasoning_effort`, Anthropic wants `thinking.type` + `budget_tokens`, Doubao/GLM/MiniMax each invent their own. Relay services often have no docs at all, so you end up guessing field names one by one.
-
-Responses are equally messy: reasoning data hides inside `🙰...🙱` tags, or in a `reasoning_content` field, or flickers past in one specific SSE event. Worst of all, upper-layer tools like opencode and Cline **don't show you the real HTTP request/response** — debugging becomes pure guesswork.
-
-So I built this **fully transparent** tool: every URL / header / body you send, and every status / header / body / raw SSE frame you receive, is laid out in front of you. Configure fields, try them, see results immediately.
-
-</details>
+> *Born from real pain. I just wanted to enable thinking mode for a model inside opencode, and discovered that even within the supposedly "universal" OpenAI Chat Completions protocol, every vendor has different fields — OpenAI o-series wants `reasoning_effort`, Anthropic wants `thinking.type` + `budget_tokens`, Doubao/GLM/MiniMax each invent their own. Relay services often have no docs at all, so you end up guessing field names one by one.*
+>
+> *Responses are equally messy: reasoning data hides inside `🙰...🙱` tags, or in a `reasoning_content` field, or flickers past in one specific SSE event. Worst of all, upper-layer tools like opencode and Cline **don't show you the real HTTP request/response** — debugging becomes pure guesswork.*
+>
+> *So I built this **fully transparent** tool: every URL / header / body you send, and every status / header / body / raw SSE frame you receive, is laid out in front of you. Configure fields, try them, see results immediately.*
 
 ---
 
@@ -89,29 +81,7 @@ cd client && npm install && npm run dev
 
 Windows 用户可以直接双击项目根的 `start-dev.ps1` 一键启动。
 
-<details><summary>🇬🇧 English — Getting Started</summary>
-
-This project is built to be launched by an AI agent — starting servers, killing port conflicts, and health-checking can all be delegated.
-
-Requires Node.js 18+.
-
-1. **Clone**: `git clone <repo-url>` — don't touch anything manually, just hand the directory to your AI agent.
-2. **Let an AI agent start it**: Point your agent (OpenCode / Claude Code / Cursor / etc.) at the project and say **"Start this project for me"**. The agent will: install deps, kill stale processes on ports 3001/28001, start backend (Express, port 3001) and frontend (Vite, port 28001), health-check both, and report local + LAN URLs.
-3. **Open browser**: defaults to **http://localhost:28001/**.
-
-**Fallback — manual start**:
-
-```bash
-# Terminal 1
-cd server && npm install && npm run dev
-
-# Terminal 2
-cd client && npm install && npm run dev
-```
-
-On Windows, double-click `start-dev.ps1` in the project root.
-
-</details>
+> *This project is built to be launched by an AI agent — starting servers, killing port conflicts, and health-checking can all be delegated. Requires Node.js 18+. After cloning, hand the directory to your agent and say "Start this project for me". The agent will: install deps, kill stale processes on ports 3001/28001, start backend (Express, port 3001) and frontend (Vite, port 28001), health-check both, and report local + LAN URLs. Manual fallback: run `npm install && npm run dev` in `server/` and `client/` separately, or double-click `start-dev.ps1` on Windows.*
 
 ---
 
@@ -132,15 +102,7 @@ On Windows, double-click `start-dev.ps1` in the project root.
 
 **👀 右 — Response** —— 流式时实时显示 Output / Reasoning；完成后展开看 Sent Request、Received Response、原始 SSE Frames。
 
-<details><summary>🇬🇧 English — UI Layout</summary>
-
-Three-column layout with draggable dividers.
-
-- **Left — Providers**: provider list (name / protocol / baseUrl / API key / models). Click one to load it into the middle column.
-- **Middle — Request**: protocol, model, baseUrl, sampling params, API key, reasoning template, messages, system, extra body.
-- **Right — Response**: real-time Output / Reasoning while streaming; expand panels afterwards to inspect Sent Request, Received Response, and raw SSE Frames.
-
-</details>
+> *Three-column layout with draggable dividers. **Left — Providers**: provider list (name / protocol / baseUrl / API key / models), click to load. **Middle — Request**: protocol, model, baseUrl, sampling, API key, reasoning template, messages, system, extra body. **Right — Response**: real-time Output/Reasoning while streaming; expand panels to inspect Sent Request, Received Response, and raw SSE Frames.*
 
 ---
 
@@ -168,21 +130,7 @@ Three-column layout with draggable dividers.
 
 下拉框选一个就行，自定义后可以保存为新模板。
 
-<details><summary>🇬🇧 English — Reasoning Templates</summary>
-
-Every vendor names their "think first" fields differently — templates paper over the differences. Three are bundled:
-
-| Template | Fields |
-|---|---|
-| **GPT o-series / GPT-5.1** | `reasoning_effort` (none / minimal / low / medium / high / xhigh) |
-| **Volcengine Ark Coding Plan** | `thinking.type` (enabled / disabled) + `reasoning_effort` (minimal / low / medium / high / max) |
-| **MiniMax** | `thinking.type` (adaptive / disabled) + `reasoning_split` (true / false) |
-
-> 📝 Anthropic / Claude's `thinking.type` + `budget_tokens` are configured via a custom template or the extra body.
-
-Pick one from the dropdown, or build a custom one and save it as a new template.
-
-</details>
+> *Every vendor names their "think first" fields differently — templates paper over the differences. Three are bundled: GPT o-series/GPT-5.1 (`reasoning_effort`), Volcengine Ark Coding Plan (`thinking.type` + `reasoning_effort`), MiniMax (`thinking.type` + `reasoning_split`). Anthropic/Claude's `thinking.type` + `budget_tokens` are configured via custom template or extra body. Pick from the dropdown, or save your own.*
 
 ---
 
@@ -204,13 +152,7 @@ Pick one from the dropdown, or build a custom one and save it as a new template.
 - 🚫 工具没有任何鉴权，只能本机用。
 - 🔄 不小心推了 key → 立刻去 provider 后台 rotate。
 
-<details><summary>🇬🇧 English — Security Notes</summary>
-
-- API keys are stored as plaintext JSON locally. **Never commit them, never expose this on the public internet.**
-- No authentication whatsoever — local use only.
-- Accidentally pushed a key? Rotate it on the provider's dashboard immediately.
-
-</details>
+> *API keys are stored as plaintext JSON locally — **never commit them, never expose on the public internet**. No authentication — local use only. Accidentally pushed a key? Rotate it immediately on the provider dashboard.*
 
 ---
 
@@ -234,27 +176,7 @@ A: baseUrl 必须带协议头，比如 `https://api.openai.com`，不能只填 `
 **Q: 能同时给同事用吗？**
 A: 不能。它没有任何鉴权，只适合本机调试。要团队用，得自己在外面套个登录层。
 
-<details><summary>🇬🇧 English — FAQ</summary>
-
-**Q: Browser can't open the page after startup?**
-A: Check the terminal for `EADDRINUSE` — the port is taken. Change the port or kill the conflicting process.
-
-**Q: "API key is required"?**
-A: The API Key field in the middle column is empty, or you're on a placeholder provider. Plug in your own key.
-
-**Q: "Model is required"?**
-A: The Model field is empty. Pick one from the dropdown, or type a model name.
-
-**Q: Relay can't return a model list?**
-A: Not every relay exposes `/v1/models`. Just type the model name manually.
-
-**Q: "Invalid baseUrl"?**
-A: baseUrl needs a scheme — `https://api.openai.com`, not just `api.openai.com`.
-
-**Q: Can I share this with teammates?**
-A: Nope. There's no auth — local debugging only. For team use, wrap your own auth layer around it.
-
-</details>
+> *Browser won't open? → Check for `EADDRINUSE`, the port is taken. "API key is required"? → Fill in your key. "Model is required"? → Pick a model. Relay can't return model list? → Type manually. "Invalid baseUrl"? → Add `https://` scheme. Share with teammates? → No, no auth — local only.*
 
 ---
 
