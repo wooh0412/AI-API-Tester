@@ -14,6 +14,8 @@
 >
 > 虽然俺的本职工作是UI和用户体验设计, 但确实在这里比较偷懒, 只和Agent打磨了思路, UI和细节都没有精力打磨, 凑合用吧
 >
+> *My day job is UI/UX design, but I got lazy here — just brainstormed the ideas with an AI agent, didn't put any effort into polishing the UI or details. Use it as-is.*
+>
 > *This README is AI-generated and may hallucinate. Code is the source of truth — open an issue or fix directly when descriptions diverge from reality.*
 
 ---
