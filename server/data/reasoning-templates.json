@@ -1,7 +1,7 @@
 [
   {
-    "id": "GPT o-series / GPT-5.1",
-    "name": "GPT o-series / GPT-5.1",
+    "id": "OpenAI Reasoning Effort",
+    "name": "OpenAI Reasoning Effort",
     "fields": [
       {
         "name": "思考程度",
@@ -14,6 +14,40 @@
           "medium",
           "high",
           "xhigh"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Claude Effort",
+    "name": "Claude Effort",
+    "fields": [
+      {
+        "name": "思考状态",
+        "value": "adaptive",
+        "target": "thinking.type",
+        "options": [
+          "adaptive"
+        ]
+      },
+      {
+        "name": "显示思考",
+        "value": "summarized",
+        "target": "thinking.display",
+        "options": [
+          "summarized"
+        ]
+      },
+      {
+        "name": "努力程度",
+        "value": "high",
+        "target": "output_config.effort",
+        "options": [
+          "low",
+          "medium",
+          "high",
+          "xhigh",
+          "max"
         ]
       }
     ]

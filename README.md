@@ -118,19 +118,18 @@ Windows 用户可以直接双击项目根的 `start-dev.ps1` 一键启动。
 
 ## 🧠 Reasoning 模板
 
-不同家的"先想后答"字段不一样，工具用模板抹平。预置了三个模板：
+不同家的"先想后答"字段不一样，工具用模板抹平。预置了四个模板：
 
 | 模板 | 字段 |
 |---|---|
-| **GPT o-series / GPT-5.1** | `reasoning_effort`（none / minimal / low / medium / high / xhigh） |
+| **OpenAI Reasoning Effort** | `reasoning_effort`（none / minimal / low / medium / high / xhigh） |
+| **Claude Effort** | `thinking.type`（adaptive）+ `thinking.display`（summarized）+ `output_config.effort`（low / medium / high / xhigh / max） |
 | **火山方舟 Coding Plan** | `thinking.type`（enabled / disabled）+ `reasoning_effort`（minimal / low / medium / high / max） |
 | **MiniMax** | `thinking.type`（adaptive / disabled）+ `reasoning_split`（true / false） |
 
-> 📝 Anthropic / Claude 的 `thinking.type` + `budget_tokens` 走自定义模板或 extra body 配。
-
 下拉框选一个就行，自定义后可以保存为新模板。
 
-> *Every vendor names their "think first" fields differently — templates paper over the differences. Three are bundled: GPT o-series/GPT-5.1 (`reasoning_effort`), Volcengine Ark Coding Plan (`thinking.type` + `reasoning_effort`), MiniMax (`thinking.type` + `reasoning_split`). Anthropic/Claude's `thinking.type` + `budget_tokens` are configured via custom template or extra body. Pick from the dropdown, or save your own.*
+> *Every vendor names their "think first" fields differently — templates paper over the differences. Four are bundled: OpenAI Reasoning Effort (`reasoning_effort`), Claude Effort (`thinking.type` + `thinking.display` + `output_config.effort`), Volcengine Ark Coding Plan (`thinking.type` + `reasoning_effort`), MiniMax (`thinking.type` + `reasoning_split`). Pick from the dropdown, or save your own.*
 
 ---
 

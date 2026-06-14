@@ -809,36 +809,36 @@ async function bootstrapReasoningTemplatesIfEmpty(): Promise<void> {
   const existing = await readReasoningTemplates();
   if (existing.length > 0) return;
   const seed: ReasoningTemplate[] = [
-    { id: '自定义', name: '自定义', fields: [] },
     {
-      id: 'GPT o-series',
-      name: 'GPT o-series',
+      id: 'OpenAI Reasoning Effort',
+      name: 'OpenAI Reasoning Effort',
       fields: [
-        { name: 'effort', value: 'low', target: 'reasoning_effort', options: ['low', 'medium', 'high'] },
+        { name: '思考程度', value: 'medium', target: 'reasoning_effort', options: ['none', 'minimal', 'low', 'medium', 'high', 'xhigh'] },
       ],
     },
     {
-      id: '通用 Thinking',
-      name: '通用 Thinking',
+      id: 'Claude Effort',
+      name: 'Claude Effort',
       fields: [
-        { name: 'type', value: 'enabled', target: 'thinking.type' },
-        { name: 'budget_tokens', value: '10000', target: 'budget_tokens' },
+        { name: '思考状态', value: 'adaptive', target: 'thinking.type', options: ['adaptive'] },
+        { name: '显示思考', value: 'summarized', target: 'thinking.display', options: ['summarized'] },
+        { name: '努力程度', value: 'high', target: 'output_config.effort', options: ['low', 'medium', 'high', 'xhigh', 'max'] },
       ],
     },
     {
-      id: 'GPT o-series (Responses)',
-      name: 'GPT o-series (Responses)',
+      id: '火山方舟 Coding Plan',
+      name: '火山方舟 Coding Plan',
       fields: [
-        { name: 'effort', value: 'medium', target: 'reasoning.effort', options: ['low', 'medium', 'high'] },
-        { name: 'summary', value: 'auto', target: 'reasoning.summary', options: ['auto', 'concise', 'detailed'] },
+        { name: '思考状态', value: 'disabled', target: 'thinking.type', options: ['enabled', 'disabled'] },
+        { name: '思考程度', value: 'medium', target: 'reasoning_effort', options: ['minimal', 'low', 'medium', 'high', 'max'], enableWhen: 'type != disabled' },
       ],
     },
     {
-      id: 'Claude Thinking',
-      name: 'Claude Thinking',
+      id: 'MiniMax',
+      name: 'MiniMax',
       fields: [
-        { name: 'type', value: 'enabled', target: 'thinking.type' },
-        { name: 'budget_tokens', value: '10000', target: 'thinking.budget_tokens' },
+        { name: '思考状态', value: 'disabled', target: 'thinking.type', options: ['adaptive', 'disabled'] },
+        { name: '分离输出', value: 'false', target: 'reasoning_split', options: ['true', 'false'], enableWhen: 'type!=disabled' },
       ],
     },
   ];
