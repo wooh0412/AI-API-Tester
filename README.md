@@ -240,4 +240,6 @@ apitest/
 
 ## 📜 License
 
-MIT ✨
+暂未指定。如需对外发布，请补充 LICENSE 文件后再行声明。
+
+Not specified yet. Add a LICENSE file before public release.
